@@ -11,9 +11,10 @@ var cors = require("cors")
 // route 
 const router = express.Router()
 
-app.use(cors())
+
 // activate or tell app variable to be an express server
 const app = express()
+app.use(cors())
 
 // start the web server... format: app.listen(portnumber, function)
 
