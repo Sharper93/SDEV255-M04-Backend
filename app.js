@@ -2,14 +2,13 @@
 
 // grav express framwork and store in var
 const express = require("express")
+// route 
+const router = express.Router()
 
 // activate or tell app variable to be an express server
 const app = express()
 
 // start the web server... format: app.listen(portnumber, function)
-app.listen(3000, function() {
-    console.log("listening on port 3000")
-})
 
 // making an api using routes
 // routes are used to handle browsers requests - look like urls - 
@@ -26,3 +25,23 @@ app.get("/hello", function(req, res) {
 app.get("/goodbye", function(req, res) {
     res.send("<h1> Bye, Express!</h1>")
 })
+
+
+router.get("/songs", function(req, res) {
+    // create object in get request
+    const song = {
+        title: "Uptown Funk",
+        artist: "Bruno Mars",
+        popularity: 10,
+        genre: ["funk", "boogie"]
+    }
+
+    //send object to frontend as json
+    res.json(song)
+})
+
+// all requests that ususally use an api start with /api...
+// so the url would be localhost:3000/api/songs
+
+app.use("/api", router)
+app.listen(3000)
