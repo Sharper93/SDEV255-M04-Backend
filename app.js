@@ -3,6 +3,9 @@
 // grav express framwork and store in var
 const express = require("express")
 
+// adding cors for cross origin scripting
+// have to use cors in order to host front end and backend on same device
+// cors added as var rather than const since it is global
 var cors = require("cors")
 
 // route 
