@@ -1,7 +1,9 @@
 // det up .. this is similar to when we use our default tags in html
 
+
 // grav express framwork and store in var
 const express = require("express")
+
 
 // adding cors for cross origin scripting
 // have to use cors in order to host front end and backend on same device
