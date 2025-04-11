@@ -2,9 +2,13 @@
 
 // grav express framwork and store in var
 const express = require("express")
+
+var cors = require("cors")
+
 // route 
 const router = express.Router()
 
+app.use(cors())
 // activate or tell app variable to be an express server
 const app = express()
 
@@ -35,9 +39,25 @@ router.get("/songs", function(req, res) {
         popularity: 10,
         genre: ["funk", "boogie"]
     }
+    const songs = [
+        {
+            title: "We Found Love",
+            artist: "Rihanna",
+            popularity: 10,
+            releaseDate: new Date(2011, 9, 22),
+            genre: ["electro house"]
+        },
+    
+        {
+            title: "Happy",
+            artist: "Pharrell Williams",
+            popularity: 10,
+            releaseDate: new Date(2013, 11, 21),
+            genre: ["soul", "new soul"]
+        }
+        ];
 
-    //send object to frontend as json
-    res.json(song)
+        res.json(songs)
 })
 
 // all requests that ususally use an api start with /api...
