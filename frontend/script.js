@@ -2,7 +2,7 @@
 // triggered when page is loaded
 
 document.addEventListener("DOMContentLoaded", async function() {
-    const response = await fetch("https://webappdev-full-stack-node.onrender.com");
+    const response = await fetch("http://localhost:3000/api/songs");
     const songs = await response.json();
 
     let html = "";
