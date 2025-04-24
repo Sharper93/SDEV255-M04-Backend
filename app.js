@@ -21,5 +21,19 @@ router.get("/songs", async(req, res) => {
     }
 })
 
+// POST REQ for adding songs to DB
+router.post("/songs", async(req, res) => {
+    try{
+        const song = await new Song(req.body)
+        await song.save({})
+        res.status(201).json(song)
+        console.log(song)
+    }
+    catch(err) {
+        res.status(400).send(err)
+    }
+
+})
+
 app.use("/api", router)
 app.listen(3000)
