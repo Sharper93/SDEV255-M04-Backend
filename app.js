@@ -1,7 +1,9 @@
 const express = require("express")
 const Song = require("./models/song")
+var cors = require('cors')
 
 const app = express()
+app.use(cors())
 
 // Middleware that parses HTTP requests with JSON body
 app.use(express.json())
@@ -36,4 +38,5 @@ router.post("/songs", async(req, res) => {
 })
 
 app.use("/api", router)
+console.log("Server is running on port 3000")
 app.listen(3000)
