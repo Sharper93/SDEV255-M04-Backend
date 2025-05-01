@@ -1,13 +1,12 @@
-// connection to db
-const db = require("../db")
+const mongoose = require("../db") // `db` is your mongoose connection
 
-// model for db to store songs in
-const Song = db.model("Song", {
-    title: {type: String, required:true},
-    artist:String, 
-    popularity:{type:Number, min:1, max:10},
-    releaseDate:{type:Date, default:Date.now},
-    genre: [String]
+const songSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  artist: String,
+  popularity: { type: Number, min: 1, max: 10 },
+  releaseDate: { type: Date, default: Date.now },
 })
+
+const Song = mongoose.model("Song", songSchema)
 
 module.exports = Song
