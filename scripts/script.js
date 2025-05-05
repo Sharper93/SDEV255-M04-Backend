@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     let html = "";
     for (let song of songs) {
         let songID = song._id
-        html += `<li>${song.title} - ${song.artist} - 
+        html += `<li>${song.title} - ${song.artist} - ${song.username}
         <a href="details.html?id=${songID}">Details</a> - 
         <a href="edit.html?id=${songID}">Edit Song</a> - 
         <a href="delete.html?id=${songID}">Delete Song</a></li>`;
