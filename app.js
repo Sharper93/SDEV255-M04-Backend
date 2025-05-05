@@ -2,6 +2,11 @@ const express = require("express")
 const Song = require("./models/song")
 var cors = require('cors')
 
+// for login
+const bodyParser = require('body-parser')
+const jwt = require('jwt-simple')
+const user = require('./models/users')
+
 const app = express()
 app.use(cors())
 
@@ -10,6 +15,34 @@ app.use(express.json())
 
 // route 
 const router = express.Router()
+
+//login authen 
+const secret = "supersecret"
+app.use("/api", router)
+
+const User = require("./models/users");
+
+//creating a new user
+router.post("/user", async (req, res) => {
+    if(!req.body.username || !req.body.password) {
+        return res.status(400).json({ error: "Username and password are required." });
+    }
+
+    const newUser = await new User({
+        username: req.body.username,
+        password: req.body.password,
+        status: req.body.status
+    })
+
+    try{
+        await newUser.save()
+        res.status(201).json({ message: "User created successfully!", user: newUser }) // created user
+
+    }
+    catch (err) {
+        console.log(err)
+    }
+})
 
 // get all songs in db
 router.get("/songs", async(req, res) => {
