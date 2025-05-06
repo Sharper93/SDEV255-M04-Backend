@@ -16,7 +16,7 @@ async function login(username, password) {
 
     // send login post request o backend
 
-    const response = await fetch("http://localhost:3000/api/auth/", {
+    const response = await fetch("http://localhost:3000/api/auth", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
